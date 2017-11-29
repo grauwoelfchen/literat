@@ -1,0 +1,17 @@
+*.egg-info
+__pycache__
+*.pyc
+*.pyo
+
+.*-version
+
+bin/gitlab-ci-multi-runner
+.env.ci
+
+tmp
+
+/config.yml
+/example
+/public
+
+venv

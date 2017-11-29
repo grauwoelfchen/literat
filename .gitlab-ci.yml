@@ -1,0 +1,43 @@
+# https://docs.gitlab.com/ce/ci/yaml/
+stages:
+  - check
+  - lint
+
+variables:
+  PIP_CACHE_DIR: pip-cache
+
+cache:
+  untracked: true
+  paths:
+    - pip-cache
+
+# -- stages
+
+check:
+  stage: check
+  image: python:3.5.4
+  variables:
+    ENV: development
+  before_script:
+    - python --version
+    - pip --version
+    - make clean
+    - make setup
+  script:
+    - make check
+  except:
+    - tags
+
+lint:
+  stage: lint
+  image: python:3.5.4
+  before_script:
+    - python --version
+    - pip --version
+    - make clean
+    - ENV=development make setup
+    - ENV=test make setup
+  script:
+    - make lint
+  except:
+    - tags

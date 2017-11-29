@@ -1,0 +1,8 @@
+Click==6.7
+PyYAML==3.12
+Chameleon==3.2
+
+# development
+flake8==3.2.1
+flake8_docstrings==1.1.0
+pylint==1.7.1
